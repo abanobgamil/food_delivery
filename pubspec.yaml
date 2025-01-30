@@ -93,7 +93,7 @@ flutter:
             - asset: assets/font/Montserrat-BoldItalic.ttf
             - asset: assets/font/Montserrat-ExtraBold.ttf
             - asset: assets/font/Montserrat-ExtraBoldItalic.ttf
-            - asset: assets/assets/font/Montserrat-Italic.ttf
+            - asset: assets/font/Montserrat-Italic.ttf
             - asset: assets/font/Montserrat-Regular.ttf
 
 #        - family: Trajan Pro
