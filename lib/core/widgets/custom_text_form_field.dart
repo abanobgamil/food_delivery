@@ -6,7 +6,7 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.textController,
-    this.textDirection = TextDirection.rtl,
+    this.textDirection = TextDirection.ltr,
     // this.onSubmit,
     this.onChanged,
  //   this.onTap,
