@@ -15,16 +15,19 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 50.h),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 10.h,
-            children: [
-              CustomTextW700(text: "LogIn",fontSize: 18.sp,color: AppColors.black,),
-              LoginTitle(),
-              VerticalSpace(height: 25.h),
-              LoginBody(),
-            ],
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 10.h,
+              children: [
+                CustomTextW700(text: "LogIn",fontSize: 18.sp,color: AppColors.black,),
+                LoginTitle(),
+                VerticalSpace(height: 25.h),
+                LoginBody(),
+              ],
+            ),
           ),
         ),
       ),
