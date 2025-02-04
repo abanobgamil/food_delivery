@@ -10,31 +10,28 @@ class LoginPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: bottomPadding.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 15.h,
-        children: [
-          CustomTextW700(
-            text: "Password",
-            fontSize: 14.sp,
-          ),
-          CustomTextFormField(
-            textController: TextEditingController(),
-            validate: (value) {
-              if(value.isEmpty){
-                return "pleaseEnterPassword";
-              }
-            },
-            hint: "Password",
-            type: TextInputType.visiblePassword,
-            isPasswordVisible: false,
-            suffix:  Icons.visibility_off,
-            suffixPressed: (){},
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 15.h,
+      children: [
+        CustomTextW700(
+          text: "Password",
+          fontSize: 14.sp,
+        ),
+        CustomTextFormField(
+          textController: TextEditingController(),
+          validate: (value) {
+            if(value.isEmpty){
+              return "pleaseEnterPassword";
+            }
+          },
+          hint: "Password",
+          type: TextInputType.visiblePassword,
+          isPasswordVisible: false,
+          suffix:  Icons.visibility_off,
+          suffixPressed: (){},
+        ),
+      ],
     );
   }
 }

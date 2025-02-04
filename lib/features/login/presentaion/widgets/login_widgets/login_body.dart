@@ -9,22 +9,13 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12.r)),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: 20.w, vertical: 25.h),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            LoginFields(),
-            LoginButton(),
-          ],
-        ),
-      ),
+    return  Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 30.h,
+      children: [
+        LoginFields(),
+        LoginButton(),
+      ],
     );
   }
 }

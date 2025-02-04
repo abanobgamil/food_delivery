@@ -10,16 +10,13 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 24.h),
-      child: CustomElevatedButton(
-        onPressed:
-        (){},
-        widget: CustomTextW700(
-          text: "login",
-          color: AppColors.white,
-          fontSize: 13.sp,
-        ),
+    return CustomElevatedButton(
+      onPressed:
+      (){},
+      widget: CustomTextW700(
+        text: "login",
+        color: AppColors.white,
+        fontSize: 13.sp,
       ),
     );
   }

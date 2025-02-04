@@ -8,28 +8,25 @@ class LoginEmail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-          padding: EdgeInsets.only(bottom: 25.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 15.h,
-            children: [
-              CustomTextW700(
-                text: "Email",
-                fontSize: 14.sp,
-              ),
-              CustomTextFormField(
-                textController: TextEditingController(),
-                validate: (value) {
-                   if(value.isEmpty){
-                     return "pleaseEnterEmailOrPhoneNumber";
-                   }
-                },
-                hint: "Email",
-                type: TextInputType.emailAddress,
-              ),
-            ],
-          ),
-        );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 15.h,
+      children: [
+        CustomTextW700(
+          text: "Email",
+          fontSize: 14.sp,
+        ),
+        CustomTextFormField(
+          textController: TextEditingController(),
+          validate: (value) {
+             if(value.isEmpty){
+               return "pleaseEnterEmailOrPhoneNumber";
+             }
+          },
+          hint: "Email",
+          type: TextInputType.emailAddress,
+        ),
+      ],
+    );
   }
 }
