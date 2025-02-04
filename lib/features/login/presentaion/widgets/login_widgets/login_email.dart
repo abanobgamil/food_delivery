@@ -25,6 +25,7 @@ class LoginEmail extends StatelessWidget {
           },
           hint: "Email",
           type: TextInputType.emailAddress,
+          hasBorder: false,
         ),
       ],
     );

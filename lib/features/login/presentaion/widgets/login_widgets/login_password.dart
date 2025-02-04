@@ -28,6 +28,7 @@ class LoginPassword extends StatelessWidget {
           hint: "Password",
           type: TextInputType.visiblePassword,
           isPasswordVisible: false,
+          hasBorder: false,
           suffix:  Icons.visibility_off,
           suffixPressed: (){},
         ),
