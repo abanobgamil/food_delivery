@@ -10,8 +10,8 @@ class CustomElevatedButton extends StatelessWidget {
     this.widget,
     this.text = "",
     this.fontSize,
-    this.verticalPadding,
-    this.horizontalPadding,
+    this.height,
+    this.width,
     this.minimumSize,
     this.backgroundColor,
     this.textColor,
@@ -22,8 +22,8 @@ class CustomElevatedButton extends StatelessWidget {
   final Function onPressed;
   final String text;
   final double? fontSize;
-  final double? horizontalPadding;
-  final double? verticalPadding;
+  final double? width;
+  final double? height;
   final MaterialStateProperty<Size?>? minimumSize;
   final Color? backgroundColor;
   final Color? textColor;
@@ -32,12 +32,11 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: horizontalPadding == null ? double.infinity : null,
+      width: width == null ? double.infinity : null,
+      height: height,
       child: ElevatedButton(
         style: ButtonStyle(
           splashFactory: NoSplash.splashFactory,
-          padding: MaterialStatePropertyAll(EdgeInsets.symmetric(vertical: verticalPadding ?? 11.h,
-              horizontal: horizontalPadding ?? 0.0 )),
             minimumSize: minimumSize,
             elevation: const MaterialStatePropertyAll(0),
             backgroundColor: MaterialStatePropertyAll(backgroundColor ?? AppColors.blue),
