@@ -21,9 +21,12 @@ class LoginButton extends StatelessWidget {
       return  CustomElevatedButton(
         height: 30.h,
           onPressed: (){
-            provider.login();
+          if(provider.formKey.currentState!.validate())
+            {
+              provider.login();
+            }
           },
-          widget: loginState is LoginSuccess ? CustomCircularProgressIndicator()
+          widget: loginState is LoginLoading ? CustomCircularProgressIndicator()
           : CustomTextW700(
             text: "LogIn",
             color: AppColors.white,

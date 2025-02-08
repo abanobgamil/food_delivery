@@ -11,6 +11,8 @@ class LoginProvider extends StateNotifier<LoginStates> {
   final passwordController = TextEditingController();
   final _loginRepoImpl = LoginRepoImpl();
 
+  final formKey = GlobalKey<FormState>();
+
   Future<void> login() async {
     state = LoginLoading();
     try {

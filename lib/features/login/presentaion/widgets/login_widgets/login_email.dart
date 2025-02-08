@@ -24,7 +24,7 @@ class LoginEmail extends StatelessWidget {
               textController: ref.read(loginNotifierProvider.notifier).emailController,
               validate: (value) {
                 if(value.isEmpty){
-                  return "pleaseEnterEmailOrPhoneNumber";
+                  return "pleaseEnterEmail";
                 }
               },
               hint: "Email",
