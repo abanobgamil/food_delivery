@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/core/widgets/custom_text_form_field.dart';
 import 'package:food_delivery/core/widgets/custom_text_w700.dart';
+import 'package:food_delivery/features/login/presentaion/providers/login_provider.dart';
 
 
 class LoginPassword extends StatelessWidget {
@@ -18,19 +20,23 @@ class LoginPassword extends StatelessWidget {
           text: "Password",
           fontSize: 14.sp,
         ),
-        CustomTextFormField(
-          textController: TextEditingController(),
-          validate: (value) {
-            if(value.isEmpty){
-              return "pleaseEnterPassword";
-            }
+        Consumer(
+          builder: (BuildContext context, WidgetRef ref, Widget? child) {
+            return CustomTextFormField(
+              textController: ref.read(loginNotifierProvider.notifier).passwordController,
+              validate: (value) {
+                if(value.isEmpty){
+                  return "pleaseEnterPassword";
+                }
+              },
+              hint: "Password",
+              type: TextInputType.visiblePassword,
+              isPasswordVisible: false,
+              hasBorder: false,
+              suffix:  Icons.visibility_off,
+              suffixPressed: (){},
+            );
           },
-          hint: "Password",
-          type: TextInputType.visiblePassword,
-          isPasswordVisible: false,
-          hasBorder: false,
-          suffix:  Icons.visibility_off,
-          suffixPressed: (){},
         ),
       ],
     );
