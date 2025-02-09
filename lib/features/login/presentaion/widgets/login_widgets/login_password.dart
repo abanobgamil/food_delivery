@@ -7,8 +7,7 @@ import 'package:food_delivery/features/login/presentaion/providers/login_provide
 
 
 class LoginPassword extends StatelessWidget {
-  final double bottomPadding;
-  const LoginPassword({super.key, this.bottomPadding=15});
+  const LoginPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +30,14 @@ class LoginPassword extends StatelessWidget {
               },
               hint: "Password",
               type: TextInputType.visiblePassword,
-              isPasswordVisible: false,
+              isPasswordVisible: ref.read(passwordVisibleProvider.notifier).state,
               hasBorder: false,
-              suffix:  Icons.visibility_off,
-              suffixPressed: (){},
+              suffix: ref.watch(passwordVisibleProvider)
+                  ? Icons.visibility_off
+                  : Icons.visibility,
+              suffixPressed: (){
+                ref.read(loginNotifierProvider.notifier).changePasswordVisibility();
+              },
             );
           },
         ),

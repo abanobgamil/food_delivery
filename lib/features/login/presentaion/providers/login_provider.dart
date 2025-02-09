@@ -5,8 +5,9 @@ import 'package:food_delivery/features/login/data/repos/login_repo_impl.dart';
 import 'package:food_delivery/features/login/presentaion/providers/login_states.dart';
 
 class LoginProvider extends StateNotifier<LoginStates> {
-  LoginProvider() : super(InitLoginState());
+  LoginProvider(this.ref) : super(InitLoginState());
 
+  final Ref ref;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final _loginRepoImpl = LoginRepoImpl();
@@ -23,9 +24,16 @@ class LoginProvider extends StateNotifier<LoginStates> {
     }
   }
 
+  void changePasswordVisibility() {
+    ref.read(passwordVisibleProvider.notifier).state = !ref.read(passwordVisibleProvider.notifier).state;
+  }
 }
 
 
+
+final passwordVisibleProvider = StateProvider<bool>((ref) => true);
+
+
 final loginNotifierProvider = StateNotifierProvider<LoginProvider, LoginStates>((ref) {
-  return LoginProvider();
+  return LoginProvider(ref);
 });
