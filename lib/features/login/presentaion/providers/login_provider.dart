@@ -18,7 +18,7 @@ class LoginProvider extends StateNotifier<LoginStates> {
   Future<void> login() async {
     state = LoginLoading();
     try {
-      _loginRepoImpl.login(emailController.text, passwordController.text);
+     await _loginRepoImpl.login(emailController.text, passwordController.text);
       state = LoginSuccess();
     } on FirebaseAuthException catch (e) {
       state = LoginError(e.message ?? 'An error occurred');

@@ -22,6 +22,13 @@ class LoginButton extends StatelessWidget {
        ref.listen(loginNotifierProvider, (previous, next){
          if(next is LoginSuccess){
            Navigator.pushNamed(context, AppRoutesNames.appLayout);
+         }else if(next is LoginError){
+           ScaffoldMessenger.of(context).showSnackBar(
+             SnackBar(
+               content: Text(next.message),
+               backgroundColor: Colors.red,
+             ),
+           );
          }
        });
       return  CustomElevatedButton(
