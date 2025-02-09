@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery/core/routing/app_route_names.dart';
 import 'package:food_delivery/core/theming/app_colors.dart';
 import 'package:food_delivery/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:food_delivery/core/widgets/custom_text_w700.dart';
@@ -18,9 +19,14 @@ class LoginButton extends StatelessWidget {
     builder: (context,ref,child){
        final loginState = ref.watch(loginNotifierProvider);
        final provider = ref.read(loginNotifierProvider.notifier);
+       ref.listen(loginNotifierProvider, (previous, next){
+         if(next is LoginSuccess){
+           Navigator.pushNamed(context, AppRoutesNames.appLayout);
+         }
+       });
       return  CustomElevatedButton(
         height: 30.h,
-          onPressed: (){
+          onPressed: () {
           if(provider.formKey.currentState!.validate())
             {
               provider.login();
