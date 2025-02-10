@@ -5,7 +5,10 @@ import 'package:food_delivery/core/widgets/custom_text_w400.dart';
 import 'package:food_delivery/features/login/presentaion/widgets/custom_elevated_button.dart';
 
 class RestaurantItem extends StatelessWidget {
-  const RestaurantItem({super.key});
+  const RestaurantItem({super.key, required this.title, required this.imageUrl});
+
+  final String title;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class RestaurantItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
             child: Image.asset(
-              "assets/images/splash_image.png",
+              imageUrl,
               height: 120.h,
               fit: BoxFit.cover,
             ),
@@ -37,7 +40,7 @@ class RestaurantItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomTextW400(
-                  text: "title",
+                  text: title,
                 ),
                 SizedBox(height: 4.h),
                 Text('Order now',
