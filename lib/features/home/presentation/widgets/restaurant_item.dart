@@ -26,12 +26,14 @@ class RestaurantItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
-            child: Image.asset(
-              imageUrl,
-              height: 120.h,
-              fit: BoxFit.cover,
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
+              child: Image.asset(
+                imageUrl,
+                height: 120.h,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Padding(
