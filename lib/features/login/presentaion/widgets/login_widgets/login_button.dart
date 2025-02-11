@@ -5,9 +5,10 @@ import 'package:food_delivery/core/routing/app_route_names.dart';
 import 'package:food_delivery/core/theming/app_colors.dart';
 import 'package:food_delivery/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:food_delivery/core/widgets/custom_text_w700.dart';
+import 'package:food_delivery/features/home/presentation/providers/home_provider.dart';
 import 'package:food_delivery/features/login/presentaion/providers/login_provider.dart';
 import 'package:food_delivery/features/login/presentaion/providers/login_states.dart';
-import 'package:food_delivery/features/login/presentaion/widgets/custom_elevated_button.dart';
+import 'package:food_delivery/core/widgets/custom_elevated_button.dart';
 
 
 class LoginButton extends StatelessWidget {
@@ -36,7 +37,9 @@ class LoginButton extends StatelessWidget {
           onPressed: () {
           if(provider.formKey.currentState!.validate())
             {
-              provider.login();
+              provider.login().then((onValue){
+                ref.read(homeNotifierProvider.notifier).getRestaurant();
+              });
             }
           },
           widget: loginState is LoginLoading ? CustomCircularProgressIndicator()
