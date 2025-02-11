@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/core/theming/app_colors.dart';
 import 'package:food_delivery/core/widgets/custom_text_w400.dart';
-import 'package:food_delivery/features/login/presentaion/widgets/custom_elevated_button.dart';
+import 'package:food_delivery/core/widgets/custom_elevated_button.dart';
 
 class RestaurantItem extends StatelessWidget {
   const RestaurantItem({super.key, required this.title, required this.imageUrl});
