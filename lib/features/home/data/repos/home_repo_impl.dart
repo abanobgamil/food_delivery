@@ -5,17 +5,13 @@ import 'package:food_delivery/features/home/domain/repos/home_repo.dart';
 
 class HomeRepoImpl extends HomeRepo{
 
-
-
   @override
   Future<List<RestaurantModel>> getRestaurant() async {
     List<RestaurantModel> restaurantList = [];
     try {
       QuerySnapshot restaurantSnapshot = await FirebaseInstances.fireStore.collection('restaurants').get();
       for (var restaurantDoc in restaurantSnapshot.docs) {
-        // Await the fetching of products for each restaurant.
-        print(restaurantDoc.data());
-      restaurantList.add(RestaurantModel.fromJson({restaurantDoc.id : restaurantDoc.data()}));
+       restaurantList.add(RestaurantModel.fromJson(restaurantDoc.data() as Map<String, dynamic>));
       }
 
       return restaurantList;
