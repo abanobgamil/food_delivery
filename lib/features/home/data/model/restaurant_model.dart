@@ -1,16 +1,16 @@
 class RestaurantModel {
   RestaurantModel(
-      { this.id,
+      { required this.id,
       required this.deliveryTime,
       required this.rating,
       required this.restaurantImage,
       required this.restaurantName});
 
-  String ? id;
-  String ? deliveryTime;
-  String ? rating;
-  String ? restaurantImage;
-  String ? restaurantName;
+  String  id;
+  String  deliveryTime;
+  String  rating;
+  String  restaurantImage;
+  String  restaurantName;
 
 
   factory RestaurantModel.fromJson(Map<String, dynamic> json) {
