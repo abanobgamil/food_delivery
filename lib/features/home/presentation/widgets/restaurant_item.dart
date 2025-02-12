@@ -29,7 +29,7 @@ class RestaurantItem extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
-              child: Image.asset(
+              child: Image.network(
                 imageUrl,
                 height: 120.h,
                 fit: BoxFit.cover,
@@ -43,6 +43,7 @@ class RestaurantItem extends StatelessWidget {
               children: [
                 CustomTextW400(
                   text: title,
+                  fontSize: 12.sp,
                 ),
                 SizedBox(height: 4.h),
                 Text('Order now',
