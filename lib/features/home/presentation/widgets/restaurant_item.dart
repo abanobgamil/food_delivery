@@ -14,6 +14,7 @@ class RestaurantItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 120.w,
+      margin: EdgeInsets.symmetric(vertical: 15.h),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.r),
