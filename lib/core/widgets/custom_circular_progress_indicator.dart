@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/core/theming/app_colors.dart';
 
 class CustomCircularProgressIndicator extends StatelessWidget {
-  const CustomCircularProgressIndicator({super.key, this.color});
+  const CustomCircularProgressIndicator({super.key, this.color, this.height, this.width});
 
  final Color ? color;
+ final double ? height;
+ final double ? width;
   @override
   Widget build(BuildContext context) {
     return Theme(
@@ -15,8 +17,8 @@ class CustomCircularProgressIndicator extends StatelessWidget {
         ),
       ),
       child: SizedBox(
-          height: 13.h,
-          width: 13.h,
+          height: height ?? 13.h,
+          width: width ?? 13.h,
           child:  CircularProgressIndicator.adaptive(strokeWidth: 2.w,)),
     );
   }
