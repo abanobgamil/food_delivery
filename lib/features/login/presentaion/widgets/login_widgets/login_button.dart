@@ -5,7 +5,7 @@ import 'package:food_delivery/core/routing/app_route_names.dart';
 import 'package:food_delivery/core/theming/app_colors.dart';
 import 'package:food_delivery/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:food_delivery/core/widgets/custom_text_w700.dart';
-import 'package:food_delivery/features/home/presentation/providers/restaurant_section_home_provider/restaurant_section_home_provider.dart';
+import 'package:food_delivery/features/home/presentation/providers/home_provider/home_provider.dart';
 import 'package:food_delivery/features/login/presentaion/providers/login_provider.dart';
 import 'package:food_delivery/features/login/presentaion/providers/login_states.dart';
 import 'package:food_delivery/core/widgets/custom_elevated_button.dart';
