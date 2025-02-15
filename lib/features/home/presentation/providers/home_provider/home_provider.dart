@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:food_delivery/features/home/data/model/offers_model.dart';
 import 'package:food_delivery/features/home/data/model/restaurant_model.dart';
 import 'package:food_delivery/features/home/data/repos/home_repo_impl.dart';
 import 'package:food_delivery/features/home/domain/repos/home_repo.dart';
@@ -13,6 +14,7 @@ class HomeProvider extends StateNotifier<HomeStates> {
   final searchController = TextEditingController();
   final HomeRepo _homeRepo;
   List<RestaurantModel> restaurantList = [];
+  List<OffersModel> offersList = [];
 
   Future<void> getRestaurant() async{
     state = HomeLoadingRestaurantState();
@@ -25,12 +27,12 @@ class HomeProvider extends StateNotifier<HomeStates> {
 
   }
   Future<void> getOffers() async{
-    state = HomeLoadingRestaurantState();
+    state = HomeLoadingGetOffersState();
     try {
       restaurantList =  await _homeRepo.getRestaurant();
-      state = HomeSuccessRestaurantState();
+      state = HomeSuccessGetOffersState();
     } on FirebaseException catch (e) {
-      state = HomeErrorRestaurantState(message: e.message ?? 'An error occurred');
+      state = HomeErrorGetOffersState(message: e.message ?? 'An error occurred');
     }
 
   }
