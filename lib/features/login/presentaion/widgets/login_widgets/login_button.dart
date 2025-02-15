@@ -39,6 +39,7 @@ class LoginButton extends StatelessWidget {
             {
               provider.login().then((onValue){
                 ref.read(homeNotifierProvider.notifier).getRestaurant();
+                ref.read(homeNotifierProvider.notifier).getOffers();
               });
             }
           },
