@@ -22,7 +22,7 @@ class LoginButton extends StatelessWidget {
        final provider = ref.read(loginNotifierProvider.notifier);
        ref.listen(loginNotifierProvider, (previous, next){
          if(next is LoginSuccess){
-           Navigator.pushNamed(context, AppRoutesNames.appLayout);
+           Navigator.pushReplacementNamed(context, AppRoutesNames.appLayout);
          }else if(next is LoginError){
            ScaffoldMessenger.of(context).showSnackBar(
              SnackBar(
