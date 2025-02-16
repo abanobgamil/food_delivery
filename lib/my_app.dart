@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery/core/routing/app_route.dart';
-import 'package:food_delivery/core/theming/app_colors.dart';
 import 'package:food_delivery/core/theming/app_theme.dart';
 import 'package:food_delivery/features/login/presentaion/screens/login_screen.dart';
 
