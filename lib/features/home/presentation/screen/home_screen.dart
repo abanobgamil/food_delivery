@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_delivery/core/theming/app_colors.dart';
-import 'package:food_delivery/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:food_delivery/core/widgets/custom_text_w700.dart';
 import 'package:food_delivery/features/home/presentation/providers/home_provider/home_provider.dart';
+import 'package:food_delivery/features/home/presentation/widgets/offer_item.dart';
 import 'package:food_delivery/features/home/presentation/widgets/restaurant_item.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -38,7 +37,21 @@ class HomeScreen extends ConsumerWidget {
               itemCount: provider.restaurantList.length,
             ),
           ),
-
+          ListView.separated(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemBuilder: (BuildContext context, int index) {
+              return OfferItem(
+                title: provider.offersList[index].title ,
+                imageUrl: provider.offersList[index].image,
+                description: provider.offersList[index].description ,
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return SizedBox(height: 10.h);
+            },
+            itemCount: provider.offersList.length,
+          ),
         ],
       ),
     );
