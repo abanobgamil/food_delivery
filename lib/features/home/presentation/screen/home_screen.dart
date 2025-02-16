@@ -1,4 +1,3 @@
-// home_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,52 +19,54 @@ class HomeScreen extends ConsumerWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomTextW700(text: "Check out our fancy restaurant"),
-          SizedBox(
-            height: 240.h,
-            child: homeState.restaurants.when(
-              data: (restaurantList) => ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  final restaurant = restaurantList[index];
-                  return RestaurantItem(
-                    title: restaurant.restaurantName,
-                    imageUrl: restaurant.restaurantImage,
-                  );
-                },
-                separatorBuilder: (context, index) => SizedBox(width: 10.w),
-                itemCount: restaurantList.length,
-              ),
-              loading: () => ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return ShimmerRestaurantItem();
-                },
-                separatorBuilder: (context, index) => SizedBox(width: 10.w),
-                itemCount:3,
-              ),
-              error: (error, st) => Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CustomTextW400(text: 'Error loading restaurants'),
-                    SizedBox(height: 10.h),
-                    CustomElevatedButton(
-                      onPressed: () => ref.read(homeNotifierProvider.notifier).getRestaurant(),
-                      text: 'Retry',
-                    ),
-                  ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomTextW700(text: "Check out our fancy restaurant"),
+            SizedBox(
+              height: 240.h,
+              child: homeState.restaurants.when(
+                data: (restaurantList) => ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    final restaurant = restaurantList[index];
+                    return RestaurantItem(
+                      title: restaurant.restaurantName,
+                      imageUrl: restaurant.restaurantImage,
+                    );
+                  },
+                  separatorBuilder: (context, index) => SizedBox(width: 10.w),
+                  itemCount: restaurantList.length,
+                ),
+                loading: () => ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return ShimmerRestaurantItem();
+                  },
+                  separatorBuilder: (context, index) => SizedBox(width: 10.w),
+                  itemCount:3,
+                ),
+                error: (error, st) => Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CustomTextW400(text: 'Error loading restaurants'),
+                      SizedBox(height: 10.h),
+                      CustomElevatedButton(
+                        onPressed: () => ref.read(homeNotifierProvider.notifier).getRestaurant(),
+                        text: 'Retry',
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: homeState.offers.when(
+            const SizedBox(height: 20),
+            homeState.offers.when(
               data: (offersList) => ListView.separated(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 itemBuilder: (context, index) {
                   final offer = offersList[index];
@@ -81,7 +82,7 @@ class HomeScreen extends ConsumerWidget {
               loading: () => ListView.separated(
                 itemBuilder: (context, index) => const ShimmerOfferItem(),
                 separatorBuilder: (context, index) => SizedBox(height: 10.h),
-                itemCount: 2, // Show 3 shimmer items (adjust as needed)
+                itemCount: 2,
               ),
               error: (error, st) => Center(
                 child: Column(
@@ -97,8 +98,8 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

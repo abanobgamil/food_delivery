@@ -18,7 +18,7 @@ class OfferItem extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 4)
         ],
@@ -29,7 +29,7 @@ class OfferItem extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(12.0.r),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -56,14 +56,13 @@ class OfferItem extends StatelessWidget {
           ),
           // Image section
           Expanded(
-            flex: 1,
             child: ClipRRect(
               borderRadius:
               const BorderRadius.horizontal(right: Radius.circular(12)),
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Image.network(imageUrl, fit: BoxFit.cover),
-              ),
+              child: SizedBox(
+                  height: 100.h,
+                  width: 100.w,
+                  child: Image.network(imageUrl, fit: BoxFit.cover)),
             ),
           )
         ],
