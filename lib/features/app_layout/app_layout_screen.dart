@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/core/theming/app_colors.dart';
 import 'package:food_delivery/features/home/presentation/screen/home_screen.dart';
 
 class AppLayoutScreen extends StatelessWidget {
@@ -7,7 +8,7 @@ class AppLayoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(backgroundColor: AppColors.darkRed,),
       body: HomeScreen(),
     );
   }
