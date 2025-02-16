@@ -1,28 +1,28 @@
-sealed class HomeStates{}
+// home_state.dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:food_delivery/features/home/data/model/offers_model.dart';
+import 'package:food_delivery/features/home/data/model/restaurant_model.dart';
 
-class InitialHomeState extends HomeStates{}
+class HomeState {
+  final AsyncValue<List<RestaurantModel>> restaurants;
+  final AsyncValue<List<OffersModel>> offers;
 
-class HomeLoadingRestaurantState extends HomeStates{}
-
-class HomeSuccessRestaurantState extends HomeStates{}
-
-class HomeErrorRestaurantState extends HomeStates {
-  final String message;
-
-  HomeErrorRestaurantState({
-    required this.message,
+  HomeState({
+    required this.restaurants,
+    required this.offers,
   });
+
+  HomeState.initial()
+      : restaurants = const AsyncData([]),
+        offers = const AsyncData([]);
+
+  HomeState copyWith({
+    AsyncValue<List<RestaurantModel>>? restaurants,
+    AsyncValue<List<OffersModel>>? offers,
+  }) {
+    return HomeState(
+      restaurants: restaurants ?? this.restaurants,
+      offers: offers ?? this.offers,
+    );
+  }
 }
-
-class HomeLoadingGetOffersState extends HomeStates{}
-
-class HomeSuccessGetOffersState extends HomeStates{}
-
-class HomeErrorGetOffersState extends HomeStates {
-  final String message;
-
-  HomeErrorGetOffersState({
-    required this.message,
-  });
-}
-
