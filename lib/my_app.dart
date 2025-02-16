@@ -18,22 +18,15 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return AnnotatedRegion<SystemUiOverlayStyle>(
-          value: const SystemUiOverlayStyle(
-            statusBarColor: AppColors.white,
-            statusBarBrightness: Brightness.light,
-            statusBarIconBrightness: Brightness.dark,
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: const TextScaler.linear(1.0),
           ),
-          child: MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-              textScaler: const TextScaler.linear(1.0),
-            ),
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: AppTheme.lightTheme,
-              home: LoginScreen(),
-              routes: AppRoutes.routes,
-            ),
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            home: LoginScreen(),
+            routes: AppRoutes.routes,
           ),
         );
       },
