@@ -29,7 +29,7 @@ class HomeProvider extends StateNotifier<HomeStates> {
   Future<void> getOffers() async{
     state = HomeLoadingGetOffersState();
     try {
-      restaurantList =  await _homeRepo.getRestaurant();
+      offersList =  await _homeRepo.getOffers();
       state = HomeSuccessGetOffersState();
     } on FirebaseException catch (e) {
       state = HomeErrorGetOffersState(message: e.message ?? 'An error occurred');
