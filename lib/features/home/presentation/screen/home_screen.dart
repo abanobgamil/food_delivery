@@ -40,6 +40,8 @@ class HomeScreen extends ConsumerWidget {
                   itemCount: restaurantList.length,
                 ),
                 loading: () => ListView.separated(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return ShimmerRestaurantItem();
@@ -62,6 +64,7 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ),
             ),
+            CustomTextW700(text: "Offers"),
             const SizedBox(height: 20),
             homeState.offers.when(
               data: (offersList) => ListView.separated(
@@ -80,6 +83,8 @@ class HomeScreen extends ConsumerWidget {
                 itemCount: offersList.length,
               ),
               loading: () => ListView.separated(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
                 itemBuilder: (context, index) => const ShimmerOfferItem(),
                 separatorBuilder: (context, index) => SizedBox(height: 10.h),
                 itemCount: 2,
