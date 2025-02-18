@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery/core/routing/app_route.dart';
+import 'package:food_delivery/core/routing/app_route_names.dart';
 import 'package:food_delivery/core/theming/app_colors.dart';
 import 'package:food_delivery/core/widgets/custom_text_w400.dart';
 import 'package:food_delivery/core/widgets/custom_elevated_button.dart';
@@ -55,7 +57,9 @@ class RestaurantItem extends StatelessWidget {
                 SizedBox(height: 8.h),
                 CustomElevatedButton(
                   backgroundColor: AppColors.lightRed,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutesNames.restaurantDetails);
+                  },
                   widget: FittedBox(
                     child: CustomTextW400(
                         text: 'View Menu', color: AppColors.black),
