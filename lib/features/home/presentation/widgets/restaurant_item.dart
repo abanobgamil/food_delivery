@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_delivery/core/routing/app_route.dart';
 import 'package:food_delivery/core/routing/app_route_names.dart';
 import 'package:food_delivery/core/theming/app_colors.dart';
 import 'package:food_delivery/core/widgets/custom_text_w400.dart';
 import 'package:food_delivery/core/widgets/custom_elevated_button.dart';
+import 'package:food_delivery/features/home/data/model/restaurant_model.dart';
+import 'package:food_delivery/features/restaurant_page/presentation/providers/restaurant_provider.dart';
 
 class RestaurantItem extends StatelessWidget {
-  const RestaurantItem({super.key, required this.title, required this.imageUrl});
+  const RestaurantItem({super.key, required this.title, required this.imageUrl, required this.restaurantId, required this.ref, required this.restaurantModel});
 
   final String title;
   final String imageUrl;
+  final  String restaurantId;
+  final WidgetRef ref;
+  final RestaurantModel restaurantModel;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +63,8 @@ class RestaurantItem extends StatelessWidget {
                 CustomElevatedButton(
                   backgroundColor: AppColors.lightRed,
                   onPressed: () {
-                    Navigator.pushNamed(context, AppRoutesNames.restaurantDetails);
+                    Navigator.pushNamed(context, AppRoutesNames.restaurantDetails,arguments: restaurantModel);
+                    ref.read(restaurantNotifierProvider.notifier).getProducts(restaurantId);
                   },
                   widget: FittedBox(
                     child: CustomTextW400(
