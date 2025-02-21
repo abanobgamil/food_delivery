@@ -15,7 +15,7 @@ class ProductsModel {
   factory ProductsModel.fromJson(Map<String, dynamic> json) {
     return ProductsModel(
         description: json["description"],
-        image: json["delivery_time"],
+        image: json["image"],
         name: json["name"],
         price: json["price"]
     );
