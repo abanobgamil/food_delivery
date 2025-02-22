@@ -7,8 +7,8 @@ class RestaurantImage extends StatelessWidget {
   final String image;
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      "assets/images/splash_image.png",
+    return Image.network(
+      image,
       height: 200.h,
       width: double.infinity,
     );
