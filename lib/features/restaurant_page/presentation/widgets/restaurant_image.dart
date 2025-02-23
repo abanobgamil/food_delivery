@@ -11,6 +11,7 @@ class RestaurantImage extends StatelessWidget {
       image,
       height: 200.h,
       width: double.infinity,
+      fit: BoxFit.fill,
     );
   }
 }
