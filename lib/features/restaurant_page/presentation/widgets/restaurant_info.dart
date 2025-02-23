@@ -15,8 +15,6 @@ class RestaurantInfo extends StatelessWidget {
       padding: EdgeInsets.all(10.h),
       decoration: BoxDecoration(
           color: AppColors.white,
-          border:
-          Border.all(color: AppColors.black, width: 1.w),
           borderRadius: BorderRadius.circular(10.r)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
