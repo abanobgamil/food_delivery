@@ -38,7 +38,7 @@ class RestaurantScreen extends ConsumerWidget {
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2, // Number of columns
                           crossAxisSpacing: 8.w, // Spacing between columns
-                          mainAxisSpacing: 8.h, // Spacing between rows
+                          mainAxisSpacing: 15.h, // Spacing between rows
                         ),
                         itemCount: products.length, // Number of items
                         itemBuilder: (context, index) {
