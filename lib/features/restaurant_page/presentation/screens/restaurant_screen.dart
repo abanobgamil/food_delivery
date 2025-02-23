@@ -30,6 +30,7 @@ class RestaurantScreen extends ConsumerWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 100.h, left: 20.w, right: 20.w),
                   child: Column(
+                    spacing: 15.h,
                     children: [
                       RestaurantInfo(restaurantData: restaurantData,),
                       restaurantState.products.when(data: (products)=> GridView.builder(
