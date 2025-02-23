@@ -45,17 +45,14 @@ class RestaurantScreen extends ConsumerWidget {
                           return Column(
                             spacing: 10.h,
                             children: [
-                              Expanded(child: Image.network(products[index].image,)),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  spacing: 10.h,
-                                  children: [
-                                    FittedBox(child: CustomTextW700(text: products[index].name)),
-                                    CustomTextW700(text: products[index].price),
-                                  ],
-                                ),
+                              Expanded(child: Image.network(products[index].image)),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                spacing: 10.h,
+                                children: [
+                                  CustomTextW700(text: products[index].name,fontSize: 10.sp,),
+                                  CustomTextW700(text: '\$${products[index].price}',fontSize: 10.sp,),
+                                ],
                               )
                             ],
                           );
