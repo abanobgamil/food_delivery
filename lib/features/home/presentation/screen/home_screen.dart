@@ -9,7 +9,6 @@ import 'package:food_delivery/features/home/presentation/widgets/offer_item.dart
 import 'package:food_delivery/features/home/presentation/widgets/restaurant_item.dart';
 import 'package:food_delivery/features/home/presentation/widgets/shimmer_offer_list.dart';
 import 'package:food_delivery/features/home/presentation/widgets/shimmer_restaurant_list.dart';
-import 'package:food_delivery/features/restaurant_page/presentation/providers/restaurant_provider.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
