@@ -25,60 +25,73 @@ class RestaurantScreen extends ConsumerWidget {
         child: Column(
           children: [
             Stack(
+              alignment: Alignment.bottomCenter,
               children: [
                 RestaurantImage(image: restaurantData.restaurantImage),
                 Padding(
-                  padding: EdgeInsets.only(top: 100.h, left: 20.w, right: 20.w),
-                  child: Column(
-                    spacing: 15.h,
-                    children: [
-                      RestaurantInfo(restaurantData: restaurantData,),
-                      restaurantState.products.when(data: (products)=> GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2, // Number of columns
-                          crossAxisSpacing: 8.w, // Spacing between columns
-                          mainAxisSpacing: 15.h, // Spacing between rows
-                        ),
-                        itemCount: products.length, // Number of items
-                        itemBuilder: (context, index) {
-                          return Column(
-                            spacing: 10.h,
-                            children: [
-                              Expanded(child: Image.network(products[index].image)),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                spacing: 10.h,
-                                children: [
-                                  CustomTextW700(text: products[index].name,fontSize: 10.sp,),
-                                  CustomTextW700(text: '\$${products[index].price}',fontSize: 10.sp,),
-                                ],
-                              )
-                            ],
-                          );
-                        },
-                      ), error: (error, st) => Center(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            CustomTextW400(text: 'Error loading products'),
-                            SizedBox(height: 10.h),
-                            CustomElevatedButton(
-                              onPressed: () => ref.read(restaurantNotifierProvider.notifier).getProducts(restaurantData.id),
-                              text: 'Retry',
-                            ),
-                          ],
-                        ),
-                      ), loading: ()=> CircularProgressIndicator())
-                    ],
-                  ),
+                  padding: EdgeInsets.only(bottom: 30.h),
+                  child: RestaurantInfo(restaurantData: restaurantData,),
+                ),]),
+                Column(
+                  spacing: 15.h,
+                  children: [
+                    restaurantState.products.when(data: (products)=> LayoutBuilder(
+                      builder: (BuildContext context, BoxConstraints constraints) {
+                        int crossAxisCount = constraints.maxWidth > 600 ? 4 : 2;
+                        double childAspectRatio = (constraints.maxWidth / crossAxisCount) / 250;
+                        return GridView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: crossAxisCount,
+                            crossAxisSpacing: 8.w,
+                            mainAxisSpacing: 15.h,
+                            childAspectRatio: childAspectRatio
+                          ),
+                          itemCount: products.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              spacing: 10.h,
+                              children: [
+                                SizedBox(
+                                  width: 150.h,
+                                  height: 150.h,
+                                  child: Expanded(
+                                    child: Image.network(products[index].image,fit: BoxFit.fill,),
+                                  ),
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  spacing: 10.h,
+                                  children: [
+                                    CustomTextW700(text: products[index].name,fontSize: 10.sp,),
+                                    CustomTextW700(text: '\$${products[index].price}',fontSize: 10.sp,),
+                                  ],
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      },
+                    ), error: (error, st) => Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CustomTextW400(text: 'Error loading products'),
+                          SizedBox(height: 10.h),
+                          CustomElevatedButton(
+                            onPressed: () => ref.read(restaurantNotifierProvider.notifier).getProducts(restaurantData.id),
+                            text: 'Retry',
+                          ),
+                        ],
+                      ),
+                    ), loading: ()=> CircularProgressIndicator())
+                  ],
                 ),
               ],
             ),
-          ],
         ),
-      ),
-    );
+      );
+
   }
 }
