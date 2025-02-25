@@ -39,11 +39,9 @@ class RestaurantProducts extends StatelessWidget {
                   SizedBox(
                     width: 150.h,
                     height: 150.h,
-                    child: Expanded(
-                      child: Image.network(
-                        products[index].image,
-                        fit: BoxFit.fill,
-                      ),
+                    child: Image.network(
+                      products[index].image,
+                      fit: BoxFit.fill,
                     ),
                   ),
                   Column(
