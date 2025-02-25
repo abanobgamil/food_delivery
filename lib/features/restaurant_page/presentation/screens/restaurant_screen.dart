@@ -5,8 +5,6 @@ import 'package:food_delivery/core/widgets/custom_elevated_button.dart';
 import 'package:food_delivery/core/widgets/custom_text_w400.dart';
 import 'package:food_delivery/core/widgets/custom_text_w700.dart';
 import 'package:food_delivery/features/home/data/model/restaurant_model.dart';
-import 'package:food_delivery/features/home/presentation/providers/home_provider/home_provider.dart';
-import 'package:food_delivery/features/restaurant_page/data/models/products_model.dart';
 import 'package:food_delivery/features/restaurant_page/presentation/providers/restaurant_provider.dart';
 import 'package:food_delivery/features/restaurant_page/presentation/widgets/restaurant_info.dart';
 import 'package:food_delivery/features/restaurant_page/presentation/widgets/restaurant_image.dart';
